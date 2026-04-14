@@ -1,0 +1,21 @@
+defaultNamespace: authentik
+helm:
+  repo: https://charts.goauthentik.io
+  chart: authentik
+  releaseName: authentik-core
+  values:
+    authentik:
+      secret_key: "GENERATE_50_CHAR_KEY"
+    postgresql:
+      enabled: true
+      persistence:
+        storageClass: "harvester-longhorn"
+    redis:
+      enabled: true
+    server:
+      ingress:
+        enabled: true
+        hosts:
+          - auth.yourdomain.com
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
