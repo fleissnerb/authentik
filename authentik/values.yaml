@@ -1,6 +1,5 @@
 authentik:
-  existingSecret:
-    secretName: "authentik-secret"
+  existingSecret: authentik-secret
 server:
   env:
     - name: AUTHENTIK_POSTGRESQL__PASSWORD
@@ -25,8 +24,7 @@ worker:
 postgresql:
   enabled: true
   auth:
-    existingSecret:
-      secretName: "authentik-db-secret"
+    existingSecret: authentik-db-secret
   persistence:
     storageClass: "harvester-longhorn"
 redis:
