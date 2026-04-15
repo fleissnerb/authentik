@@ -1,5 +1,5 @@
 authentik:
-  secret_key: "GENERATE_50_CHAR_KEY"
+  existingSecret: "authentik-secret-key"
 postgresql:
   enabled: true
   persistence:
