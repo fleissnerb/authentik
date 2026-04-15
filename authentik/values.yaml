@@ -1,5 +1,7 @@
 authentik:
-  existingSecret: "authentik-secret-key"
+  existingSecret:
+    secretName: "authentik-secret-key"
+    secretKey: "authentik-secret-key"
 postgresql:
   enabled: true
   persistence:
