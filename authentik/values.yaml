@@ -1,20 +1,13 @@
-global:
+authentik:
+  existingSecret:
+    secretName: "authentik-secret"
+server:
   env:
     - name: AUTHENTIK_POSTGRESQL__PASSWORD
       valueFrom:
         secretKeyRef:
           name: authentik-db-secret
-          key: key
-    - name: POSTGRES_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: authentik-db-secret
-          key: key
-authentik:
-  existingSecret:
-    secretName: "authentik-secret"
-    secretKey: "key"
-server:
+          key: password
   ingress:
     enabled: true
     annotations:
@@ -22,7 +15,19 @@ server:
     ingressClassName: nginx
     hosts:
       - auth.crust.life
+worker:
+  env:
+    - name: AUTHENTIK_POSTGRESQL__PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-secret
+          key: password
 postgresql:
   enabled: true
+  auth:
+    existingSecret:
+      secretName: "authentik-db-secret"
   persistence:
     storageClass: "harvester-longhorn"
+redis:
+  enabled: true
