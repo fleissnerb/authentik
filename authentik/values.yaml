@@ -1,0 +1,15 @@
+authentik:
+  secret_key: "GENERATE_50_CHAR_KEY"
+postgresql:
+  enabled: true
+  persistence:
+    storageClass: "harvester-longhorn"
+redis:
+  enabled: true
+server:
+  ingress:
+    enabled: true
+    hosts:
+      - auth.crust.life
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt"

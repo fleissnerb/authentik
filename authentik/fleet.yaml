@@ -1,0 +1,8 @@
+defaultNamespace: authentik
+helm:
+  repo: https://charts.goauthentik.io
+  chart: authentik
+  releaseName: authentik
+  version: "1.4.7"
+  valuesFiles:
+    - values.yaml
