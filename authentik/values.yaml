@@ -14,13 +14,6 @@ server:
     ingressClassName: nginx
     hosts:
       - auth.crust.life
-worker:
-  env:
-    - name: AUTHENTIK_POSTGRESQL__PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: authentik-db-secret
-          key: password
 postgresql:
   enabled: true
   auth:
