@@ -1,4 +1,6 @@
 defaultNamespace: authentik
+labels:
+  bundle: authentik
 helm:
   repo: https://charts.goauthentik.io
   chart: authentik
