@@ -1,14 +1,15 @@
 global:
   env:
+    - name: AUTHENTIK_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: authentik-secret
+          key: secret_key
     - name: AUTHENTIK_POSTGRESQL__PASSWORD
       valueFrom:
         secretKeyRef:
           name: authentik-db-secret
           key: password
-authentik:
-  existingSecret:
-    secretName: "authentik-secret"
-    secretKey: "secret_key"
 server:
   ingress:
     enabled: true
