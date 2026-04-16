@@ -13,8 +13,6 @@ global:
 server:
   ingress:
     enabled: true
-    annotations:
-      cert-manager.io/cluster-issuer: "letsencrypt"
     ingressClassName: "nginx"
     hosts:
       - auth.crust.life
