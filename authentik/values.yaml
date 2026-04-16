@@ -5,14 +5,10 @@ global:
         secretKeyRef:
           name: authentik-db-secret
           key: password
-    - name: POSTGRES_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: authentik-db-secret
-          key: password
 authentik:
   existingSecret:
     secretName: "authentik-secret"
+    secretKey: "secret_key"
 server:
   ingress:
     enabled: true
