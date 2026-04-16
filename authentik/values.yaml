@@ -5,6 +5,11 @@ global:
         secretKeyRef:
           name: authentik-db-secret
           key: password
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-secret
+          key: password
 authentik:
   existingSecret:
     secretName: "authentik-secret"
