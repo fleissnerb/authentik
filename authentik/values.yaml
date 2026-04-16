@@ -5,20 +5,20 @@ global:
         secretKeyRef:
           name: authentik-db-secret
           key: password
-  authentik:
-    existingSecret:
-      secretName: "authentik-secret"
-  server:
-    ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt"
-      ingressClassName: "nginx"
-      hosts:
-        - auth.crust.life
-  postgresql:
+authentik:
+  existingSecret:
+    secretName: "authentik-secret"
+server:
+  ingress:
     enabled: true
-    auth:
-      existingSecret: "authentik-db-secret"
-    persistence:
-      storageClass: "harvester-longhorn"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt"
+    ingressClassName: "nginx"
+    hosts:
+      - auth.crust.life
+postgresql:
+  enabled: true
+  auth:
+    existingSecret: "authentik-db-secret"
+  persistence:
+    storageClass: "harvester-longhorn"
